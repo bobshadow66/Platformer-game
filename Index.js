@@ -7,7 +7,8 @@ canvas.height = 576
 const gravity = 0.5
 
 class Sprite {
-  constructor(position, imageSrc){
+  constructor({ position, imageSrc }){
+    console.log(imageSrc);
     this.position = position
     this.image = new Image()
     this.image.src = imageSrc
@@ -63,7 +64,7 @@ const keys = {
 
 const background = new Sprite({
   position: { x: 0, y: 0 },
-  imageSrc: './Assests/background.png',
+  imageSrc: './assets/background.png',
 })
 
 function animate() {
