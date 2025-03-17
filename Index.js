@@ -9,6 +9,11 @@ const scaledCanvas = {
   height: canvas.height / 4
 }
 
+const floorCollisions2D = []
+for (let i= 0; i < floorCollisions.length; i += 36) {
+  dloorCollisions2D.push(floorCollisions.slice())
+}
+
 const gravity = 0.5
 
 class Sprite {
