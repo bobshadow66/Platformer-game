@@ -9,20 +9,27 @@ const scaledCanvas = {
   height: canvas.height / 4
 }
 
+// Ensure floorCollisions is defined before using it
+if (typeof floorCollisions === 'undefined') {
+  console.error('floorCollisions is not defined!')
+}
+
 const floorCollisions2D = []
-for (let i= 0; i < floorCollisions.length; i += 36) {
-  dloorCollisions2D.push(floorCollisions.slice(i, i + 36))
+for (let i = 0; i < floorCollisions.length; i += 36) {
+  floorCollisions2D.push(floorCollisions.slice(i, i + 36))
 }
 
 const collisionBlocks = []
 floorCollisions2D.forEach((row, y) => {
   row.forEach((symbol, x) => {
-    if(symbol === 202) {
+    if (symbol === 202) {
       console.log('draw a block here!')
-      collisionBlocks.push(new CollisionBlock({position: {
-        x: x * 16,
-        y: y * 16,
-      }}))
+      collisionBlocks.push(new CollisionBlock({
+        position: {
+          x: x * 16,
+          y: y * 16,
+        }
+      }))
     }
   })
 })
@@ -50,15 +57,22 @@ function animate() {
   c.save()
   c.scale(4, 4)
   c.translate(0, -background.image.height + scaledCanvas.height)
+
   background.update()
+  collisionBlocks.forEach(collisionBlock => {
+    collisionBlock.update()
+  })
+
   c.restore()
+
+  player.velocity.x = 0
+  player2.velocity.x = 0
+
+  if (keys.d.pressed) player.velocity.x = 5
+  else if (keys.a.pressed) player.velocity.x = -5
 
   player.update()
   player2.update()
-
-  player.velocity.x = 0
-  if (keys.d.pressed) player.velocity.x = 5
-  else if (keys.a.pressed) player.velocity.x = -5 
 }
 
 animate()
