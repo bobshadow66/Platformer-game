@@ -1,10 +1,31 @@
-export default class Player {
-    constructor({ x, y }) {
-      this.position = { x, y };
-      this.velocity = { x: 0, y: 0 };
+class Player {
+    constructor(position) {
+      this.position = position;
+      this.velocity = {
+        x: 0,
+        y: 1,
+      };
+      this.width = 100
+      this.height = 100;
+      this.collisionBlocks = collisionBlocks
     }
-  
+    
+    draw() {
+      c.fillStyle = 'red';
+      c.fillRect(this.position.x, this.position.y, this.width, this.height);
+    }
+    
     update() {
-      console.log('Updating player');
-    }
+      this.draw();
+      
+      this.position.x += this.velocity.x;
+     
+      }
+    
+     applyGravity() {
+        this.position.y += this.velocity.y
+        this.velocity.y += gravity
+
+     }
   }
+  

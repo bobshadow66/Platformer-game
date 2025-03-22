@@ -57,9 +57,12 @@ platformCollisions2D.forEach((row, y) => {
 
 const gravity = 0.5
 
-const player = new Player({ 
-  x: 0, 
-  y: 0
+const player = new Player({
+  poisition: { 
+  x: 500, 
+  y: 0,
+},
+ collisionBlocks,
 })
 const player2 = new Player({ 
   x: 300, 
