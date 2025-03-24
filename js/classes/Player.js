@@ -18,9 +18,10 @@ class Player {
     update() {
       this.draw();
       
-      this.position.x += this.velocity.x;
-     
-      }
+      this.position.x += this.velocity.x
+      this.applyGravity()
+      this.checkForVerticalCollisions()
+    }
     
      applyGravity() {
         this.position.y += this.velocity.y

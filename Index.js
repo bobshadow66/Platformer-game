@@ -59,11 +59,12 @@ const gravity = 0.5
 
 const player = new Player({
   poisition: { 
-  x: 500, 
-  y: 0,
-},
+    x: 500, 
+    y: 0,
+  },
  collisionBlocks,
-})
+});
+
 const player2 = new Player({ 
   x: 300, 
   y: 100 
@@ -82,7 +83,7 @@ const background = new Sprite({
 function animate() {
   window.requestAnimationFrame(animate)
   c.fillStyle = 'white'
-  c.fillRect(0, 0, canvas.width, canvas.height)
+  //c.fillRect(0, 0, canvas.width, canvas.height)
 
   c.save()
   c.scale(4, 4)
